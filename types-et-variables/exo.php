@@ -9,5 +9,38 @@
     echo $nbstr;
 
 
+    $nb_tab = [46, 4.9, 17];
+    print_r($nb_tab);
+
+    echo "<br>";
+
+    $str_tab = ["coucou", "salut", "felix"];
+    print_r($str_tab);
+
+    echo "<br>";
+
+    $animal = [
+        "species" => "chat",
+        "name" => "Curly", 
+        "age" => 10
+    ];
+    print_r($animal);
+
+    echo "<br>";
+
+    $data = 42.0;
+    echo $data;
+
+    echo "<br>";
+
+    $int = (int) 42.0;
+    echo $int;
+
+    echo "<br>";
+
+    $str = (string) '42';
+    echo $str;
+
+
 ?>
 
