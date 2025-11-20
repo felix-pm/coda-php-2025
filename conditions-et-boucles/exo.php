@@ -39,23 +39,32 @@
     ];
     foreach($user as $key => $value)
     {
-        echo "$key : $value <br>";
+        echo "My $key is $value <br>";
     }
 
     echo '<br>';
     echo '<br>';
     echo '<br>';
 
-    echo 'Exercice 3:';
+    echo 'Exercice 4: <br>';
     $users = [
         [
-            "firstName" => "Hugues",
-            "lastName" => "Froger"
+            "Prénom" => "Hugues",
+            "Nom" => "Froger"
         ],
         [
-            "firstName" => "Mari",
-            "lastName" => "Doucet"
+            "Prénom" => "Mari",
+            "Nom" => "Doucet"
         ]
     ];
+    $i = 0;
+    for($i=0;$i < count($users); $i++)
+    {
+        foreach($users[$i] as $key => $value)
+        {
+            echo "Mon $key est $value <br>";
+        }
+    }
+
 
 ?>
