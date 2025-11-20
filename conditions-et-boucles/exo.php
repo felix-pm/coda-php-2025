@@ -33,4 +33,21 @@
     echo '<br>';
 
     echo 'Exercice 3: <br>';
+    $user = [
+        "name" => "James",
+        "age" => 28
+    ];
+    foreach($user as $key => $value)
+    {
+        echo "$key : $value <br>";
+        $i++;
+    }
+
+    echo '<br>';
+    echo '<br>';
+    echo '<br>';
+
+    echo 'Exercice 3:';
+
+
 ?>
