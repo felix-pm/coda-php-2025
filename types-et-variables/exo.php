@@ -28,17 +28,17 @@
 
     echo "<br>";
 
-    $data = 42.0;
+    $data = 42.1;
     echo $data;
 
     echo "<br>";
 
-    $int = (int) 42.0;
+    $int = (int) $data;
     echo $int;
 
     echo "<br>";
 
-    $str = (string) '42';
+    $str = (string) $int;
     echo $str;
 
 
