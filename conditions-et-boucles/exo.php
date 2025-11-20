@@ -40,7 +40,6 @@
     foreach($user as $key => $value)
     {
         echo "$key : $value <br>";
-        $i++;
     }
 
     echo '<br>';
@@ -48,6 +47,15 @@
     echo '<br>';
 
     echo 'Exercice 3:';
-
+    $users = [
+        [
+            "firstName" => "Hugues",
+            "lastName" => "Froger"
+        ],
+        [
+            "firstName" => "Mari",
+            "lastName" => "Doucet"
+        ]
+    ];
 
 ?>
