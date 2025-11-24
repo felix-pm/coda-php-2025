@@ -20,7 +20,6 @@ function routing() : string
     return "homepage";
 }
 
-echo routing();
 
 require "templates/layout.phtml";
 ?>

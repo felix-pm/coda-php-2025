@@ -3,11 +3,12 @@
     <head>
         <meta charset="UTF-8">
         <title>Exercices Formulaires</title>
-        <link rel="stylesheet" href="assets/styles/style.css">
+        <link rel="stylesheet" href="assets/style.css">
     </head>
     <body>
+        <?php $templates = routing();?>
         <?php require "templates/partials/_header.phtml"; ?>
-        <?php require "templates/partials/_homepage.phtml"; ?>
+        <?php require "templates/partials/_$templates.phtml"; ?>
         <?php require "templates/partials/_footer.phtml"; ?>
     </body>
 </html>
