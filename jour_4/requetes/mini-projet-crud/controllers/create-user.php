@@ -1,17 +1,17 @@
 <?php 
 
-require "controllers/connexion.php";
+require "connexion.php";
 
-$query = $db->prepare("INSERT INTO users (id, username, email) VALUES (NULL, :username, :email, :job)");
+$query = $db->prepare("INSERT INTO users (id, username, email, job) VALUES (NULL, :name, :email, :job)");
 $parameters = [
-    'username' => $_POST['username'],
+    'name' => $_POST['name'],
     'email' => $_POST['email'],
     'job' => $_POST['job']
 ];
 $query->execute($parameters);
 $users = $query->fetchAll(PDO::FETCH_ASSOC);
 
-header("Location: index.php");
+header("Location: ../index.php");
 exit;
 
 ?>
