@@ -1,6 +1,6 @@
 <?php 
 
-require "controllers/connexions.php"
+require "controllers/connexion.php";
 
 $query = $db->prepare("INSERT INTO users (id, username, email) VALUES (NULL, :username, :email, :job)");
 $parameters = [
@@ -11,5 +11,7 @@ $parameters = [
 $query->execute($parameters);
 $users = $query->fetchAll(PDO::FETCH_ASSOC);
 
+header("Location: index.php");
+exit;
 
 ?>
