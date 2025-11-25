@@ -1,0 +1,36 @@
+<?php
+
+require "controllers/show-user.php";
+
+?>
+
+<main class="container py-5">
+    <a href="index.php?route=list">Retour à la liste</a>
+    <h1 class="my-5">Voir plus sur l'utilisateur</h1>
+    <table class="table table-striped mt-5">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Job</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <?= $users['id'] ?>
+                </td>
+                <td>
+                    <?= $users['username'] ?>
+                </td>
+                <td>
+                    <?= $users['email'] ?>
+                </td>
+                <td>
+                    <?= $users['name'] ?>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</main>
