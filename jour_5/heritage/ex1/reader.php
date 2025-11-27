@@ -1,5 +1,4 @@
 <?php
-
 require "user.php";
 
 class Reader extends User
