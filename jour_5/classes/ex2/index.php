@@ -1,11 +1,14 @@
 <?php
 require "Character.php";
 
-$user1 = new User(1, "admin", "admin");
-$user2 = new User(2, "user", "user");
+$Character = new Character(1);
 
-echo "{$user1->getId()} {$user1->getUsername()} {$user1->getPassword()}";
+echo "{$Character->getFullName()}";
+
 echo "<br>";
-echo "{$user2->getId()} {$user2->getUsername()} {$user2->getPassword()}";
+
+$Character->setfirstName("Sarah");
+$Character->setlastName("Connor");
+echo "{$Character->getFullName()}";
 
 ?>

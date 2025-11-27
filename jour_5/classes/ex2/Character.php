@@ -1,10 +1,9 @@
 <?php
-class User {
-    private ? int $Id = null;
+class Character {
     private string $firstName = "Jane";
     private string $lastName = "Doe";
 
-    public function __construct()
+    public function __construct(private int $Id)
     {
     
     }
@@ -14,29 +13,34 @@ class User {
         return $this->Id;
     }
 
-    public function setId(string $Id) : void
+    public function setId(int $Id) : void
     {
         $this->Id = $Id;
     }
-    // username
-    public function getUsername() : string
+    // firstName
+    public function getfirstName() : string
     {
-        return $this->Username;
+        return $this->firstName;
     }
 
-    public function setUsername(string $Username) : void
+    public function setfirstName(string $firstName) : void
     {
-        $this->Username = $Username;
+        $this->firstName = $firstName;
     }
-    // passworld
-    public function getPassword() : string
+    // lastName
+    public function getlastName() : string
     {
-        return $this->Password;
+        return $this->lastName;
     }
 
-    public function setPassworld(int $Password) : void
+    public function setlastName(string $lastName) : void
     {
-        $this->Password = $Password;
+        $this->lastName = $lastName;
+    }
+    // fullname
+    public function getFullName() : string
+    {
+        return $this->firstName . " " . $this->lastName;
     }
 }
 
