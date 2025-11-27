@@ -15,6 +15,6 @@ var_dump($mage->introduce());
 echo "<br>";
 echo $warrior->introduce() . ", j'ai " . $warrior->getlife() . " points de vie " . " et j'ai " . $warrior->getenergy() . " d'énergie.";
 echo "<br>";
-echo $mage->introduce() . ", j'ai " . $mage->getlife() . " points de vie " . " et j'ai " . $mage->getmana() . " d'énergie.";
+echo $mage->introduce() . ", j'ai " . $mage->getlife() . " points de vie " . " et j'ai " . $mage->getmana() . " de mana.";
 
 ?>
