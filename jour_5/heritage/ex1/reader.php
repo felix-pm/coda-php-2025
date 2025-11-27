@@ -1,4 +1,7 @@
 <?php
+
+require "user.php";
+
 class Reader extends User
 {
     private array $favoriteBooks = [];
