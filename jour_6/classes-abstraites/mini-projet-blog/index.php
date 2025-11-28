@@ -2,6 +2,7 @@
 require "User.php";
 require "categorie.php";
 require "post.php";
+require "UserManager.php"
 
 $user = new User(1, "felix", "felix@gmail.com", "mdp", "member", new DateTime("2025-11-28 16:45:00"));
 echo "{$user->getfullinfouser()}" . "<br>";
