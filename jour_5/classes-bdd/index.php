@@ -44,6 +44,26 @@ foreach($resultat as $item){
     );
     $perso->setId($item['id']);
     $users[] = $perso;
+
+
+// ----------------------------------------
+
+
+
+// Étape 6 :
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 
