@@ -1,7 +1,7 @@
 <?php
 class User
 {
-    private int ? $id = NULL;
+    private ? int $id = NULL;
     private string $firstName;
     private string $lastName;
     private string $email;
