@@ -21,27 +21,21 @@
 			</nav>
 		</header>
 		<?php
-			if(isset($_GET["route"])) {
-                if($_GET["route"] === "home")
-                {
-                    require "templates/home.phtml";
-                }
-                elseif($_GET["route"] === "a-propos")
-                {
-                    require "templates/about.phtml";
-                }
-                elseif($_GET["route"] === "notFound")
-                {
-                    require "templates/notFound.phtml";
-                }
-                elseif($_GET["route"] === "contact")
-                {
-                    require "templates/contact.phtml";
-                }
-            }
-            else
+            if($route === "home")
             {
                 require "templates/home.phtml";
+            }
+            elseif($route === "about")
+            {
+                require "templates/about.phtml";
+            }
+            elseif($route === "contact")
+            {
+                require "templates/contact.phtml";
+            }
+            elseif($route === "notFound")
+            {
+                require "templates/notFound.phtml";
             }
 		?>
 	</body>

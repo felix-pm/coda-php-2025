@@ -18,13 +18,13 @@ class Router
             else
             {
                 $ctrl = new PageController();
-                $ctrl->home();
+                $ctrl->notFound();
             }
         }
         else
         {
             $ctrl = new PageController();
-            $ctrl->notFound();
+            $ctrl->home();
         }
     }
 }
