@@ -1,0 +1,170 @@
+/* --- DÉFINITION DES COULEURS --- */
+:root {
+    --neonPurple: #5e60ce;
+    --neonBlue: #64dfdf;
+    --palatinate-purple: #7400b8;
+    --white: #ffffff;
+    --skobeloff: #006466;
+    --gradient-bg: linear-gradient(225deg, #7400b8, #6930c3, #5e60ce, #5390d9, #4ea8de, #48bfe3, #56cfe1);
+}
+
+/* --- RESET & BASE --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'JetBrains Mono', monospace;
+    background: var(--gradient-bg);
+    color: var(--white);
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- MAIN CONTENT --- */
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 15%;
+    gap: 10%;
+}
+
+/* Partie Gauche : Texte */
+.hero-text {
+    flex: 1;
+}
+
+.hero-text h1 {
+    font-size: 4rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+}
+
+.hero-text p {
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.4;
+    opacity: 0.9;
+    max-width: 400px;
+}
+
+/* Partie Droite : La Carte (Glassmorphism) */
+.music-card {
+    flex: 0 0 400px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 4px;
+    padding: 2rem;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Contenu de la carte */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 1rem;
+}
+
+.song-info h3 {
+    color: #d100d1;
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.song-info h2 {
+    color: var(--neonBlue);
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.album-art {
+    width: 60px;
+    height: 60px;
+    border-radius: 2px;
+    filter: brightness(0.8) contrast(1.2);
+    margin-top: -20px;
+}
+
+/* Liste de lecture */
+.playlist {
+    list-style: none;
+}
+
+.playlist li {
+    padding: 0.8rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.playlist li:last-child {
+    border-bottom: none;
+}
+
+.playlist li:hover {
+    color: var(--white);
+}
+
+/* Icônes et état actif */
+.icon-container {
+    margin-right: 12px;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.playlist li.active {
+    font-weight: 700;
+    color: var(--white);
+}
+
+.active-icon {
+    width: 100%;
+    height: auto;
+}
+
+.play-icon-wrapper {
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.play-icon-img {
+    width: 8px;
+    height: auto;
+    margin-left: 2px; /* Centrage optique du triangle */
+}
+
+.flex-tree{
+    display: flex;
+}
+
+.flex-tree img{
+    width: 50px;
+    height: auto;
+    margin-top: -20px;
+    margin-right: 20px;
+}

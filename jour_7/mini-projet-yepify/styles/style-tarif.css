@@ -1,0 +1,167 @@
+:root {
+    --neonPurple: #5e60ce;
+    --neonBlue: #64dfdf;
+    --palatinate-purple: #7400b8;
+    --white: #ffffff;
+    --skobeloff: #006466;
+    --card-header-purple: #5e60ce;
+    --card-header-blue: #5390d9;
+    --bg-gradient: linear-gradient(225deg, #7400b8, #6930c3, #5e60ce, #5390d9, #4ea8de, #48bfe3, #56cfe1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'JetBrains Mono', monospace;
+    background: var(--bg-gradient);
+    color: var(--white);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- Navigation --- */
+.navbar {
+    display: flex;
+    justify-content: center;
+    gap: 200px;
+    padding: 20px 50px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.nav-link {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-transform: capitalize;
+}
+
+/* --- Titre --- */
+.main-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-top: 60px;
+    margin-bottom: 50px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+/* --- Grille des Prix --- */
+.pricing-container {
+    display: flex;
+    justify-content: center;
+    /* MODIFICATION : Center pour les aligner au milieu verticalement */
+    align-items: center; 
+    gap: 0;
+    padding: 50px 20px; /* Un peu plus de padding vertical pour l'effet de dépassement */
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- Style Général des Cartes (Basic et Pro) --- */
+.card {
+    background-color: var(--white);
+    color: black;
+    width: 300px;
+    /* MODIFICATION : Hauteur minimale standard pour Basic et Pro */
+    min-height: 550px; 
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    position: relative; /* Nécessaire pour le z-index */
+}
+
+/* --- Style Spécifique Carte PREMIUM --- */
+/* C'est ici qu'on la rend plus grande */
+.card.premium {
+    /* MODIFICATION : Hauteur minimale plus grande */
+    min-height: 650px; 
+    /* On la fait passer devant les autres */
+    z-index: 10; 
+    /* Ombre plus prononcée pour l'effet de relief */
+    box-shadow: 0 20px 50px rgba(0,0,0,0.4); 
+    /* Optionnel : la rendre légèrement plus large aussi si désiré */
+    /* width: 320px; */
+}
+
+
+/* En-tête des cartes */
+.card-header {
+    padding: 20px 0;
+    text-align: center;
+    color: var(--white);
+    font-weight: 700;
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+}
+
+/* Couleurs des en-têtes */
+.card.basic .card-header,
+.card.pro .card-header {
+    background-color: var(--card-header-purple);
+}
+
+.card.premium .card-header {
+    background-color: var(--card-header-blue);
+    /* Optionnel : augmenter le padding du header premium pour accentuer l'effet */
+    padding: 30px 0;
+}
+
+/* Corps de la carte */
+.card-body {
+    padding: 20px 25px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Liste des fonctionnalités */
+.features {
+    list-style: none;
+    font-size: 0.85rem;
+    line-height: 2.5;
+    font-weight: 500;
+}
+
+.features li {
+    word-wrap: break-word; 
+}
+
+/* Prix */
+.price {
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-top: 30px;
+    color: var(--card-header-purple);
+}
+
+.card.premium .price {
+    color: var(--card-header-blue);
+}
+
+/* Responsive */
+@media (max-width: 950px) {
+    .pricing-container {
+        gap: 30px;
+        flex-direction: column;
+    }
+    
+    .card, .card.premium {
+        width: 100%;
+        max-width: 350px;
+        /* Sur mobile, on remet des tailles standard */
+        min-height: auto; 
+    }
+    
+    .navbar {
+        gap: 50px;
+    }
+}

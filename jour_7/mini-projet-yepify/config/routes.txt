@@ -1,0 +1,3 @@
+/ PageController:home
+/Tarifs PageController:tarifs 
+/Not-found PageController:notFound 

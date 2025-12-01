@@ -1,0 +1,37 @@
+/* Importation de la police car c'est un fichier à part */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&display=swap');
+
+/* Reset de base pour ce fichier */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    padding: 2rem 0;
+    padding-left: 14%; 
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    font-family: 'JetBrains Mono', monospace;
+    background: transparent; 
+    width: 100%;
+}
+
+.div-header{
+    display: flex;
+    gap: 200px;
+}
+
+a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    transition: opacity 0.2s;
+}
+
+a:hover {
+    opacity: 0.8;
+}
