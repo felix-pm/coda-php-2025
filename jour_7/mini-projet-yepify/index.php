@@ -23,6 +23,6 @@ catch(Exception $e)
 {
     if($e->getCode() === 404)
     {
-        header('Location: templates/404.phtml');
+        header('Location: ./Not-found');
     }
 }
