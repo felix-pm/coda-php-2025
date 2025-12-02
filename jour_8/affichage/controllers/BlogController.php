@@ -7,7 +7,7 @@ class BlogController extends AbstractController {
         $this->render("blog", $articles);
     }
 
-    public function article(ind $id) : void
+    public function article(int $id) : void
     {
         require "data/data-articles.php";
         $this->render("article", $articles[$id]);

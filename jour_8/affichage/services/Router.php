@@ -8,12 +8,13 @@ class Router
         if (!isset($get['path']) || $get['path']=== '') {
             $crtl->index();
         }
-        elseif (isset($get['path']) && $get['path'] === 'articles')
+        elseif (isset($get['path']) && str_contains($get['path'], 'articles'))
         {
-            $crtl = new BlogController();
-            $crtl->article();
             $url = explode("/", $get['path']);
-            $article = $url[2];
+            $article = $url[1];
+            $crtl = new BlogController();
+            $crtl->article($article);
+            
             
         }
         else {
