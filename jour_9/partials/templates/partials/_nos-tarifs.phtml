@@ -1,0 +1,8 @@
+<section class="id="third-partials>
+    <p>NOS TARIFS</p>
+    <?php foreach ($data["prices"] as $key => $article): ?>
+        <h2><?= $article["name"] ?></h2>
+        <h3><?= $article["price"] ?></h3>
+        <h4><?= $article["duration"] ?></h4>
+    <?php endforeach; ?>
+</section>

@@ -1,0 +1,9 @@
+<section class="id="second-partials>
+    <p>NOS SERVICES</p>
+    <?php foreach ($data["services"] as $key => $article): ?>
+        <img src="assets/images/<?=$article["image"]?>">
+        <h2><?= $article["name"] ?></h2>
+        <h3><?= $article["tagline"] ?></h3>
+        <h4><?= $article["description"] ?></h4>
+    <?php endforeach; ?>
+</section>

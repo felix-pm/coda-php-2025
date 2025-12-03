@@ -1,0 +1,150 @@
+:root {
+    --white: rgba(255, 255, 255, 1);
+    --black: rgba(0, 0, 0, 1);
+    --green: rgba(0, 100, 102, 1);
+    --dark-green: rgba(11, 82, 91, 1);
+    --darker-green: rgba(27, 58, 75, 1);
+    --dark-blue: rgba(39, 38, 64, 1);
+    --purple: rgba(77, 25, 77, 1);
+    --background-gradient : linear-gradient(to bottom, rgba(27, 58, 75, 0.9), rgba(39, 38, 64, 0.9), rgba(77, 25, 77, 0.9));
+    --background-gradient2 : linear-gradient(to bottom, rgba(77, 25, 77, 1), rgba(39, 38, 64, 1), rgba(27, 58, 75, 1));
+    --background-gradient3 : linear-gradient(to bottom, rgba(27, 58, 75, 1), rgba(39, 38, 64, 1), rgba(77, 25, 77, 1));
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style-type: none;
+    font-family: "Montserrat", sans-serif;
+}
+
+body{
+    text-align: center;
+}
+
+/* header */
+header {
+    background-color: var(--dark-blue);
+    text-transform: uppercase;
+}
+
+nav {   
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--white);
+}
+
+nav img{
+    width: 70px;
+    margin-top: 10px;
+}
+
+ul {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    gap: 150px;
+}
+
+ul li{
+    margin-top: 10px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    font-weight: 400;
+}
+
+
+/* intro */
+.intro{
+    display: flex;
+    flex-direction: column;
+    background-image: var(--background-gradient), url("../images/cemetery.jpeg");
+    background-size: cover;
+    background-position: center;
+    height: 85vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.intro img{
+    width: 300px;
+}
+
+.intro h2{
+    font-size: 50px;
+    color: #fff;
+    text-transform: uppercase;
+    margin-top: 30px;
+}
+
+.intro h3{
+    margin-top: 70px;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 50px;
+    font-weight: 300;
+}
+
+
+/* nos-services */
+
+        .grid-container {
+            display: grid;
+            
+            /* LA COMMANDE MAGIQUE :
+               Crée 3 colonnes de largeur égale (1fr = 1 fraction de l'espace disponible).
+               Le navigateur place automatiquement les 3 images suivantes sur la ligne du dessous.
+            */
+            grid-template-columns: repeat(3, 1fr);
+            
+            gap: 20px;  /* Espacement automatique entre les colonnes ET les lignes */
+            
+            /* Juste pour la démo */
+            max-width: 1000px;
+            margin: 50px auto;
+        }
+
+        /* 2. Les Images */
+        .grid-item {
+            width: 100%;       /* L'image prend toute la largeur de sa case de grille */
+            height: 200px;     /* Hauteur fixe pour l'exemple */
+            object-fit: cover; /* Coupe l'image proprement sans l'écraser */
+            border-radius: 8px;
+        }
+
+        /* 3. Responsive (Mobile) */
+        @media (max-width: 768px) {
+            .grid-container {
+                /* Sur mobile, on passe à 2 colonnes */
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .grid-container {
+                /* Sur très petit écran, 1 seule colonne */
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+
+
+
+/* footer */
+footer {
+    background-color: var(--dark-blue);
+    text-transform: uppercase;
+    padding-bottom: 20px;
+}
+
+footer img{
+    margin-bottom: 10px;
+}
+
+footer h2{
+    font-size: 10px;
+}

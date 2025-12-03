@@ -1,0 +1,13 @@
+<footer>
+    <nav>
+        <img src="assets/images/<?=$data["logo"]?>">
+        <h2><?=$data["footer"] ?></h2>
+        <ul>
+            <?php foreach($data["links"] as $key=>$link): ?>
+            <li>
+                <?= $link ?>
+            </li>
+            <?php endforeach ?>
+        </ul>
+    </nav>
+</footer>
