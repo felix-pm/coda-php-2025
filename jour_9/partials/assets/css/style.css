@@ -91,44 +91,60 @@ ul li{
 
 /* nos-services */
 
-        .grid-container {
-            display: grid;
-            
-            /* LA COMMANDE MAGIQUE :
-               Crée 3 colonnes de largeur égale (1fr = 1 fraction de l'espace disponible).
-               Le navigateur place automatiquement les 3 images suivantes sur la ligne du dessous.
-            */
-            grid-template-columns: repeat(3, 1fr);
-            
-            gap: 20px;  /* Espacement automatique entre les colonnes ET les lignes */
-            
-            /* Juste pour la démo */
-            max-width: 1000px;
-            margin: 50px auto;
-        }
+.nos-services p{
+    padding-top: 80px;
+    margin-bottom: 30px;
+    font-size: 50px;
+    font-weight: 700;
+    color: #fff;
+}
 
-        /* 2. Les Images */
-        .grid-item {
-            width: 100%;       /* L'image prend toute la largeur de sa case de grille */
-            height: 200px;     /* Hauteur fixe pour l'exemple */
-            object-fit: cover; /* Coupe l'image proprement sans l'écraser */
-            border-radius: 8px;
-        }
+.nos-services {
+    background: var(--background-gradient2);
+}
 
-        /* 3. Responsive (Mobile) */
-        @media (max-width: 768px) {
-            .grid-container {
-                /* Sur mobile, on passe à 2 colonnes */
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
 
-        @media (max-width: 480px) {
-            .grid-container {
-                /* Sur très petit écran, 1 seule colonne */
-                grid-template-columns: 1fr;
-            }
-        }
+}
+
+.service-card {
+    overflow: hidden; 
+    display: flex; 
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.service-card img {
+    width: 170px;     
+    height: 170px;   
+    object-fit: cover;   
+}
+
+.card-content {
+    padding: 15px;
+    text-align: center;   
+}
+
+.card-content h2{
+    color: #fff;
+    text-transform: uppercase;
+    margin-bottom: 50px;
+}
+.card-content h3{
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 300;
+    margin-bottom: 50px;
+}
+.card-content h4{
+    color: #fff;
+    font-weight: 300;
+}
+
 
 
 
