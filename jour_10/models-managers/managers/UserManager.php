@@ -1,11 +1,8 @@
 <?php
 
-require "AbstractManager.php"
-
-class UserManager
-{    
+class UserManager extends AbstractManager{    
     public function __construct(){
-        $this->db = $db;
+        parent::__construct();
     }
 
     public function create(User $user) : user
@@ -57,8 +54,8 @@ class UserManager
 
         if ($result) {
             return new User(
-                $result["firstname"], 
-                $result["lastname"], 
+                $result["firstName"], 
+                $result["lastName"], 
                 $result["email"], 
                 $result["password"], 
                 $result["id"]
@@ -77,8 +74,8 @@ class UserManager
 
         foreach ($results as $result) {
             $users[] = new User(
-                $result["firstname"], 
-                $result["lastname"], 
+                $result["firstName"], 
+                $result["lastName"], 
                 $result["email"], 
                 $result["password"], 
                 $result["id"]

@@ -2,17 +2,17 @@
 
 abstract class AbstractManager
 {
-    private PDO $db;
+    protected PDO $db;
 
     public function __construct()
     {
-        $host = "host de la base, généralement localhost";
+        $host = "localhost";
         $port = "3306";
-        $dbname = "nomdelabase";
+        $dbname = "coda_models_managers";
         $connexionString = "mysql:host=$host;port=$port;dbname=$dbname;charset=utf8";
 
-        $user = "votre_username";
-        $password = "votre_password";
+        $user = "root";
+        $password = "";
 
         $this->db = new PDO(
             $connexionString,

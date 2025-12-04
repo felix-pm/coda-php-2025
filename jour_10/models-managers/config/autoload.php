@@ -1,10 +1,10 @@
 <?php
-require "models/User.php";
+require_once "models/User.php";
 
-require "managers/AbstractManager.php";
-require "managers/UserManager.php";
+require_once "managers/AbstractManager.php";
+require_once "managers/UserManager.php";
 
-require "controllers/AbstractController.php";
-require "controllers/DefaultController.php";
+require_once "controllers/AbstractController.php";
+require_once "controllers/DefaultController.php";
 
-require "services/Router.php";
+require_once "services/Router.php";
