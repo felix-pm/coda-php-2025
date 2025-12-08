@@ -1,0 +1,31 @@
+<?php require "templates/partials/_header.phtml"?>
+
+<div class="container_section">
+
+   <?php $titre = false; ?>
+
+   <?php foreach($data as $player): ?>
+      
+      <?php if (($_GET["team"]===$player->getTeam()->getname()) && ($titre === false)):?>
+               
+      <h3><?=$player->getTeam()->getname()?></h3>
+      <?php $titre = true;?>
+
+      <?php endif;?>
+
+      <?php endforeach ?>
+      
+   <div class="detail_team">
+
+      <?php foreach($data as $player)
+         {
+                  
+            if ($_GET["team"]===$player->getTeam()->getname())
+            {
+               require "templates/partials/_detail_team.phtml";
+            }
+         }             
+            ?>
+   </div>
+
+</div>

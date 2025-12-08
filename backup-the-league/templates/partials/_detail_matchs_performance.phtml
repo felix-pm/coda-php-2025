@@ -1,0 +1,29 @@
+<div class="detail_performance">
+    <div id="titre">
+        <h3><?= $game->getName() ?></h3>
+        <?php 
+        $date = new DateTime($game->getDate());
+        $dateFormatee = $date->format('d/m/Y');
+    ?>
+        <p class="date1"><?= $dateFormatee ?></p>
+    </div>
+
+    <div class="versus1">
+        <?php if ($game->getWinner() === $game->getTeam1()->getTeam_id()) {
+            $id1 = "winner1";
+        } else {
+            $id1 = "looser1";
+        } ?>
+        <div class="team-block" id="<?= $id1 ?>">
+            <img  src="<?= $game->getTeam1()->getLogo()->getUrl() ?>" alt="Logo Team 1" class="tailleimg">
+        </div>
+        <?php if ($game->getWinner() === $game->getTeam2()->getTeam_id()) {
+            $id2 = "winner1";
+        } else {
+            $id2 = "looser1";
+        } ?>
+        <div class="team-block" id="<?= $id2 ?>">
+            <img src="<?= $game->getTeam2()->getLogo()->getUrl() ?>" alt="Logo Team 2" class="tailleimg">
+        </div>
+    </div>
+    </div>

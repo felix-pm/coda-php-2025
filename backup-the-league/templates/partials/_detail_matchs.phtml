@@ -1,6 +1,10 @@
 <section class="_detail_matchs">   
     <h3><?= $game->getName() ?></h3>
-    <p class="date"><?= $game->getDate() ?></p>
+    <?php 
+        $date = new DateTime($game->getDate());
+        $dateFormatee = $date->format('d/m/Y');
+    ?>
+    <p class="date"><?= $dateFormatee ?></p>
 
     <div class="versus">
         <?php if($game->getWinner()=== $game->getTeam1()->getTeam_id())

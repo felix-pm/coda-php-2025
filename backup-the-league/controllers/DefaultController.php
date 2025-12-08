@@ -4,8 +4,17 @@ class DefaultController extends AbstractController
 {
     public function home() : void
     {
-        $ctrl = new PlayerManager;
-        $data = $ctrl->findAll();
+        $ctrl1 = new PlayerManager;
+        $ctrl2 = new Player_performanceManager;
+        $ctrl3= new GameManager;
+        $data1 = $ctrl1->findAll();
+        $data2 = $ctrl2->findAll();
+        $data3 = $ctrl3->findAll();
+        $data=[
+            "players" => $data1,
+            "performance" =>$data2,
+            "game" =>$data3
+        ];
         $this->render("home_page", $data);
     }
 
@@ -19,7 +28,7 @@ class DefaultController extends AbstractController
     public function list_players() : void
     {
         $ctrl = new PlayerManager;
-        $data = $ctrl->findAll();
+        $data = $ctrl->findPlayer();
         $this->render("list_players", $data);
     }
 
@@ -40,7 +49,7 @@ class DefaultController extends AbstractController
             "performance" =>$data1,
             "game" =>$data2
         ];
-        $this->render("matchs", $data);
+        $this->render("match", $data);
     }
 
     public function players() : void

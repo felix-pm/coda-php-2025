@@ -17,7 +17,6 @@
   justify-content: center;
   align-items: center;
   gap: 30px;
-  background-color: var(--darkerGrey);
 }
 
 .nom_photo {
@@ -36,6 +35,7 @@
   font-weight: 700;
   text-transform: uppercase;
   font-size: 32px;
+  margin: 15px;
 }
 
 .nom_photo > img {
@@ -58,6 +58,7 @@
   font-weight: 700;
   text-transform: uppercase;
   font-size: 32px;
+  margin: 15px;
 }
 
 .tableau_perf_player {
@@ -140,6 +141,7 @@
   font-weight: 700;
   text-transform: uppercase;
   font-size: 32px;
+  margin: 15px;
 }
 
 .info_teamates {
@@ -165,6 +167,7 @@
   font-weight: 700;
   text-transform: uppercase;
   font-size: 18px;
+  margin: 10px;
 }
 
 .data_teamates > a {
@@ -178,6 +181,8 @@
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 16px;
+  margin-bottom: 30px;
+  text-transform: uppercase;
 }
 
 .data_teamates > img {

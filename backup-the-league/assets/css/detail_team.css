@@ -1,0 +1,73 @@
+:root {
+  --darkerGrey: #0b132b;
+  --darkGrey: #1c2541;
+  --yellow: #d4b52f;
+  --green: #509d77;
+  --pink: #d97ab5;
+  --blue: #45a0ec;
+  --purple: #9e87cb;
+  --red: #d66f75;
+  --grey: #83a1bb;
+  --white: #ffffff;
+}
+
+.container_team {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.container_team > img {
+  width: 250px;
+  height: 250px;
+}
+
+.container_team > h3 {
+  color: var(--pink);
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 18px;
+  margin: 10px;
+}
+
+#decouvrir_joueur {
+  color: var(--white);
+  text-decoration: none;
+  border: solid;
+  border-width: 1px;
+  border-color: var(--white);
+  border-radius: 5px;
+  padding: 5px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
+
+.detail_team {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.container_section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.container_section > h3 {
+  color: var(--pink);
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 40px;
+  margin: 15px;
+}

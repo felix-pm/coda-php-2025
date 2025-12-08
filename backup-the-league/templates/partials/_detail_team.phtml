@@ -1,0 +1,5 @@
+<div class="container_team">
+    <img src="<?= $player->getPortrait()->getUrl() ?>" alt="<?= $player->getPortrait()->getAlt() ?>">
+    <h3><?= $player->getNickname() ?></h3>
+    <a href="index.php?route=players&&name=<?= $player->getNickname() ?>" id="decouvrir_joueur">DECOUVREZ <?= $player->getNickname() ?></a>
+</div>

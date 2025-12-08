@@ -1,0 +1,37 @@
+<?php require "templates/partials/_header.phtml" ?>
+
+<?php foreach ($data["game"] as $game): ?>
+
+<?php if ($_GET["game"] === $game->getName()):
+
+    require "templates/partials/_detail_matchs_performance.phtml";
+
+  endif;
+
+
+endforeach ?>
+<div id="tableau_perf">
+  <h3 id="perfo">LES PERFORMANCES</h3>
+  <table>
+    <thead>
+      <tr>
+        <th class="intitule">PLAYER</th>
+        <th class="intitule">TEAM</th>
+        <th class="intitule">POINTS</th>
+        <th class="intitule">ASSISTS</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php foreach ($data["performance"] as $perf): ?>
+        <?php if ($_GET['game'] === $perf->getGame()->getName()): ?>
+          <tr>
+            <td class="cellule" id="nickname_perfo"> <?= $perf->getPlayer()->getNickname() ?> </td>
+            <td class="cellule" id="team_perfo"><?= $perf->getPlayer()->getTeam()->getname() ?></td>
+            <td class="cellule" id="autres_perfo1"><?= $perf->getPoints() ?></td>
+            <td class="cellule" id="autres_perfo2"><?= $perf->getAssists() ?></td>
+          </tr>
+        <?php endif; ?>
+      <?php endforeach ?>
+    </tbody>
+  </table>
+</div>

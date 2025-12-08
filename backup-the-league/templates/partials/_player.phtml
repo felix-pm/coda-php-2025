@@ -1,0 +1,13 @@
+<section id="players">
+    <h2 id="titre_player">LES PLAYERS DE LA LEAGUE</h2>
+    <div id="grid_player">
+    <?php foreach ($data as $player): ?>
+        <div class="box_player">
+            <img src="<?= $player->getPortrait()->getUrl() ?>" alt="<?= $player->getPortrait()->getAlt() ?>">
+            <h3><?= $player->getNickname() ?></h3>
+            <p><?= $player->getTeam()->getname() ?></p>
+            <a href="index.php?route=players&&name=<?= $player->getNickname() ?>">DECOUVREZ <?= $player->getNickname() ?></a>
+        </div>
+    <?php endforeach ?>
+    </div>
+</section>

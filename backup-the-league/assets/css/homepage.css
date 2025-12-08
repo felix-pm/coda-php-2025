@@ -1,0 +1,224 @@
+:root {
+  --darkerGrey: #0b132b;
+  --darkGrey: #1c2541;
+  --yellow: #d4b52f;
+  --green: #509d77;
+  --pink: #d97ab5;
+  --blue: #45a0ec;
+  --purple: #9e87cb;
+  --red: #d66f75;
+  --grey: #83a1bb;
+  --white: #ffffff;
+}
+
+body {
+    font-family: sans-serif;
+    margin: 0;
+}
+
+.intro-homepage {
+    background-image: url("../img/home_background_league.png");
+    background-size: cover;   
+    background-position: center; 
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;      
+    justify-content: center;    
+    align-items: center;      
+    width: 100%;
+    min-height: 400px;           
+    box-sizing: border-box;
+    color: white;                
+    font-family: sans-serif;    
+    text-align: center;
+}
+
+.intro-homepage h2 {
+    font-size: 3rem;             
+    font-weight: 700;            
+    text-transform: uppercase;   
+    margin: 0 0 120px 0;          
+    letter-spacing: 1px;        
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.intro-homepage h3 {
+    font-size: 1.5rem;        
+    font-weight: 400;         
+    margin: 0;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+.team-a-la-une {
+    padding: 50px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.team-a-la-une h2 {
+    color: var(--yellow);
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 1.8rem;
+    margin-bottom: 50px;
+    text-align: center;
+    text-decoration-line: underline;
+    text-underline-offset: 10px;
+    text-decoration-color: var(--yellow);
+}
+
+.team-content-container {
+    background-color: transparent;
+    border: 1px solid var(--darkGrey);
+    padding: 40px;
+    display: flex;
+    align-items: flex-end; 
+    justify-content: center;
+    gap: 150px;
+    max-width: 95%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.nom-team {
+    flex: 0 0 auto;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 40px; 
+}
+
+.nom-team img {
+    width: 300px;
+    height: auto;
+    display: block;
+}
+
+.team-details-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.team-header h3 {
+    color: var(--yellow);
+    font-size: 2rem;
+    margin: 0 0 15px 0;
+    font-weight: 700;
+}
+
+.team-header h4 {
+    color: var(--white);
+    font-size: 1.1rem;
+    margin: 0 0 35px 0;
+    font-weight: normal;
+}
+
+.players-grid {
+    display: flex;
+    gap: 100px;
+    flex-wrap: wrap;
+}
+
+.player {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.player img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 0;
+    display: block;
+}
+
+.player p {
+    color: var(--pink);
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-top: 15px;
+    font-size: 0.9rem;
+    text-align: center;
+    margin-left: 100px;
+}
+
+.player-a-la-une {
+    background-color: var(--darkerGrey);
+    padding: 60px 20px;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.player-a-la-une h2 {
+    color: var(--pink);
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 60px;
+    text-align: center;
+    text-decoration: underline;
+    text-decoration-color: var(--pink);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 10px;
+}
+
+.players-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.player-card {
+    border: 1px solid var(--darkGrey);
+    background-color: transparent; 
+    padding: 25px;
+    width: 280px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
+}
+
+.player-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--pink);
+}
+
+.player-card img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1/1; 
+    object-fit: cover;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.player-card h3 {
+    color: var(--pink);
+    font-size: 1.4rem;
+    font-weight: 400; 
+    text-transform: uppercase;
+    margin: 0 0 10px 0;
+    text-align: center;
+}
+
+.player-card p {
+    color: var(--yellow);
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0;
+    text-align: center;
+}
+
+.dernier-match{
+    margin-bottom: 50px;
+}

@@ -1,0 +1,75 @@
+<?php require "templates/partials/_header.phtml"?>
+<section class="intro-homepage">
+    <h2>TOUT SUR LA LEAGUE</h2>
+    <h3>Les players, les teams et l'actu des matchs</h3>
+</section>
+
+<section class="team-a-la-une">
+    <h2>LA TEAM À LA UNE</h2>
+
+    <?php 
+    $mesJoueurs = [];
+    foreach($data["players"] as $player) {
+        if ($player->getTeam()->getName() === 'Angry Owls') {
+            $mesJoueurs[] = $player;
+        }
+    }
+    ?>
+
+    <?php if (!empty($mesJoueurs)): ?>
+        <?php $team = $mesJoueurs[0]->getTeam(); ?>
+        
+        <div class="team-content-container">
+            <div class="nom-team">
+                <img src="<?= $team->getLogo()->getUrl() ?>" alt="<?= $team->getLogo()->getAlt() ?>">
+            </div>
+
+            <div class="team-details-right">
+                <div class="team-header">
+                    <h3><?= $team->getName() ?></h3>
+                    <h4>Les players</h4>
+                </div>
+                
+                <div class="players-grid">
+                    <?php foreach ($mesJoueurs as $joueur): ?>
+                        <div class="player">
+                            <img src="<?= $joueur->getPortrait()->getUrl() ?>" alt="<?= $joueur->getPortrait()->getAlt() ?>">
+                            <p><?= $joueur->getNickname() ?></p>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
+
+</section>
+
+<section class="player-a-la-une">
+    <h2>LES PLAYERS À LA UNE</h2>
+
+    <div class="players-container">
+        <?php foreach($data["players"] as $player): ?>
+            <?php 
+            if (in_array($player->getNickname(), ['Dundy', 'Wofin', 'Stonk'])): 
+            ?>
+                <div class="player-card">
+                    <img src="<?= $player->getPortrait()->getUrl() ?>" alt="<?= $player->getPortrait()->getAlt() ?>">
+                    
+                    <h3><?= $player->getNickname() ?></h3>
+                    
+                    <p><?= $player->getTeam()->getName() ?></p>
+                </div>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    </div>
+</section>
+
+<section class="dernier-match">
+    <?php 
+    if (isset($data["game"][0])): 
+        $game = $data["game"][0];
+        require "templates/partials/_detail_matchs.phtml";
+
+    endif; 
+    ?>
+</section>

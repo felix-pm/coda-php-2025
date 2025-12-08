@@ -21,7 +21,7 @@ class Router
                 $ctrl = new DefaultController();
                 $ctrl->list_teams();
             }
-            else if($get["route"] === "matchs")
+            else if($get["route"] === "match")
             {
                 $ctrl = new DefaultController();
                 $ctrl->matchs();

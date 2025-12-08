@@ -72,18 +72,45 @@ class PlayerManager extends AbstractManager {
         return $playersList;
     }    
 
-    public function findPlayer() 
+    public function findPlayer(): array
     {
-        $query =$this->db->prepare('SELECT players.* FROM players WHERE nickname = :name ');
-        $parametres = [
-            'name' => $_GET["name"]
-        ];
-
-        $query->execute($parametres);
-        $results = $query->fetch(PDO::FETCH_ASSOC);
+        $query =$this->db->prepare('SELECT * FROM players JOIN media ON players.portrait=media.id JOIN teams ON players.team=teams.id ORDER BY players.portrait');
         
-        return $results;
-    }
+
+        $query->execute();
+        $results = $query->fetchAll(PDO::FETCH_ASSOC);
+        
+        $players = [];
+
+        foreach ($results as $result) {            
+
+            $team1 = new Team(
+                $result['id'],
+                $result['name'],
+                $result['description'],
+                null
+            );
+
+            $playerPort = new Media(
+                $result['id'],
+                $result['url'],
+                $result['alt']
+            );
+
+            $play = new Player(
+                $result['id'],
+                $result['nickname'],
+                $result['bio'],
+                $playerPort,
+                $team1           
+            );
+
+            $players[] = $play;
+        }
+
+        return $players;
+    }    
+    
 }
 
 ?>

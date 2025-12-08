@@ -6,12 +6,12 @@ class Player
         private int $id,
         private string $nickname,
         private string $bio,
-        private ?Media $portrait, // Type Media (et non int)
-        private Team $team       // Type Team (et non int)
+        private ?Media $portrait,
+        private Team $team 
     ) {
     }
 
-    // Getters
+
     public function getId(): int { 
         return $this->id; 
     }
