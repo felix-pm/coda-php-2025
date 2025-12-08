@@ -1,0 +1,186 @@
+:root {
+  --darkerGrey: #0b132b;
+  --darkGrey: #1c2541;
+  --yellow: #d4b52f;
+  --green: #509d77;
+  --pink: #d97ab5;
+  --blue: #45a0ec;
+  --purple: #9e87cb;
+  --red: #d66f75;
+  --grey: #83a1bb;
+  --white: #ffffff;
+}
+
+.detail_joueur_team {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  background-color: var(--darkerGrey);
+}
+
+.nom_photo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  width: 100%;
+}
+
+.nom_photo > h2 {
+  color: var(--pink);
+  padding: 0px;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 32px;
+}
+
+.nom_photo > img {
+  height: 300px;
+  width: 300px;
+}
+
+.stat_perso {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  width: 100%;
+}
+
+.stat_perso > h3 {
+  color: var(--blue);
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 32px;
+}
+
+.tableau_perf_player {
+  border: solid;
+  border-width: 1px;
+  border-color: var(--darkGrey);
+  width: 85vw;
+}
+
+#data_perf {
+  display: block;
+  height: 350px;
+}
+
+.container_stat {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#title_list {
+  border-bottom: solid;
+  border-color: var(--darkGrey);
+  border-width: 1px;
+  padding: 5px;
+}
+
+.data_stat {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#team {
+  color: var(--yellow);
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+#victoire {
+  color: var(--green);
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+#defaite {
+  color: var(--red);
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.container_stat > th {
+  color: var(--white);
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.container_stat > td {
+  color: var(--white);
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.list_teamates {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.list_teamates > h3 {
+  color: var(--yellow);
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 32px;
+}
+
+.info_teamates {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  list-style: none;
+  padding: 0px;
+}
+
+.data_teamates {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.data_teamates > p {
+  color: var(--pink);
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 18px;
+}
+
+.data_teamates > a {
+  color: var(--white);
+  text-decoration: none;
+  border: solid;
+  border-width: 1px;
+  border-color: var(--white);
+  border-radius: 5px;
+  padding: 5px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.data_teamates > img {
+  width: 225px;
+  height: 225px;
+}

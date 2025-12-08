@@ -1,0 +1,13 @@
+<section id="teams">
+    <h2>LES TEAMS DE LA LEAGUE</h2>
+    <div class="team_table">
+        <?php foreach ($data as $team): ?>
+            <div class="oneteam">
+                <img src="<?= $team->getLogo()->getUrl() ?>" alt="<?= $team->getLogo()->getAlt() ?>">
+                <h3><?= $team->getname() ?></h3>
+                <p><?= $team->getdescription() ?></p>
+                <a href="index.php?route=teams&&team=<?= $team->getname() ?>">DÉCOUVREZ <?= $team->getname() ?></a>
+            </div>
+        <?php endforeach ?>
+    </div>
+</section>

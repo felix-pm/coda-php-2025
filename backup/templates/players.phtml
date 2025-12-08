@@ -1,0 +1,11 @@
+<?php require "templates/partials/_header.phtml"?>
+<?php foreach($data["players"] as $player): ?>
+            
+    <?php if ($_GET["name"]===$player->getNickname()):
+
+        require "templates/partials/_detail_joueur_team.phtml";
+                
+        endif;?>
+
+                          
+<?php endforeach ?>

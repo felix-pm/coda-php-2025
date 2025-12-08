@@ -1,0 +1,16 @@
+<?php require "templates/partials/_header.phtml" ?>
+
+<section class="all-matchs">
+    <h2 class="title">LES MATCHS</h2>
+
+    <div class="container_match">
+    
+        <?php foreach($data as $game): ?>
+            <article class="game-card">
+                <?php require "templates/partials/_detail_matchs.phtml"?> 
+                <h2><a href="index.php?route=matchs&&game=<?= $game->getName()?>">DETAILS DU MATCH</a></h2>           
+            </article>        
+        <?php endforeach ?>
+
+    <div>
+</section>

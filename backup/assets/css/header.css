@@ -1,0 +1,38 @@
+header{
+    margin-bottom: 40px;
+}
+nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+#league {
+    color: white !important;
+    text-decoration: none;
+    font-family: Ubuntu;
+    font-size: 20px;
+}
+
+ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap:15%;
+}
+
+li {
+    color: white;
+    font-family: Roboto;
+    font-size: 12px;
+    list-style-type: none;
+
+
+}
+
+li a {
+    text-decoration: none;
+}

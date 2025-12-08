@@ -1,0 +1,29 @@
+<section class="_detail_matchs">   
+    <h3><?= $game->getName() ?></h3>
+    <p class="date"><?= $game->getDate() ?></p>
+
+    <div class="versus">
+        <?php if($game->getWinner()=== $game->getTeam1()->getTeam_id())
+            { 
+                $id1 = "winner" ;
+            }
+            else
+            {
+                $id1 = "looser";
+            }?>
+        <div class="team-block" id="<?=$id1?>">
+            <img src="<?= $game->getTeam1()->getLogo()->getUrl() ?>" alt="Logo Team 1">
+        </div>
+            <?php if($game->getWinner()=== $game->getTeam2()->getTeam_id())
+            { 
+                $id2 = "winner" ;
+            }
+            else
+            {
+                $id2 = "looser";
+            }?>
+        <div class="team-block" id="<?=$id2?>">
+            <img src="<?= $game->getTeam2()->getLogo()->getUrl() ?>" alt="Logo Team 2">
+        </div>
+    </div>
+</section>

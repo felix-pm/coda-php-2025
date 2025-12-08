@@ -1,0 +1,14 @@
+{
+    "name": "user/projet_felix",
+    "require": {
+
+    },
+  "autoload": {
+    "classmap": [
+      "controllers/",
+      "managers/",
+      "models/",
+      "services/"
+    ]
+  }
+}

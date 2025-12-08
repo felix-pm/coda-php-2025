@@ -1,0 +1,75 @@
+#teams {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height:auto;
+    margin-bottom: 20px;
+
+}
+
+#teams h2 {
+    color: #d4b52f;
+    width: 100%;
+    text-align: center;
+    font-family: Ubuntu;
+    font-size: 30px;
+}
+
+.team_table {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-template-rows: repeat(2, auto);    
+    margin-top: 40px;
+    column-gap: 40px;
+    row-gap: 40px;   
+    
+}
+
+
+.oneteam {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    width:auto;  
+    
+}
+
+.oneteam img {
+    width:250px;
+    height: auto;
+    
+}
+
+.oneteam h3 {
+    color: #d4b52f;
+    width: 100%;
+    text-align: center;
+    font-family: Ubuntu;
+    text-transform: uppercase;
+    font-size: 25px;
+}
+
+.oneteam p {
+    color: white;
+    width: 100%;
+    text-align: center;
+    font-family: Roboto;
+    font-size: 12px;
+}
+
+.oneteam a {
+    color: #d4b52f !important;
+    border: #d4b52f 1px solid;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-family: Roboto;
+    font-size: 12px;
+    text-decoration: none;
+    padding: 5px;
+
+}

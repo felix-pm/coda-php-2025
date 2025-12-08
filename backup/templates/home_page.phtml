@@ -1,0 +1,96 @@
+<?php require "templates/partials/_header.phtml"?>
+<section class="intro-homepage">
+    <h2>TOUT SUR LA LEAGUE</h2>
+    <h3>Les players, les teams et l'actu des matchs</h3>
+</section>
+
+<section class="team-a-la-une">
+    <h2>LA TEAM À LA UNE</h2>
+
+    <?php 
+    $mesJoueurs = [];
+    foreach($data as $player) {
+        if ($player->getTeam()->getName() === 'Angry Owls') {
+            $mesJoueurs[] = $player;
+        }
+    }
+    ?>
+    <?php if (!empty($mesJoueurs)): ?>
+        <?php $team = $mesJoueurs[0]->getTeam(); ?>
+        
+        <div class="nom-team">
+            <img src="<?= $team->getLogo()->getUrl() ?>" alt="<?= $team->getLogo()->getAlt() ?>">
+        </div>
+
+        <div class="nom-joueur">
+            <?php foreach ($mesJoueurs as $joueur): ?>
+                <div class="player">
+                    <h3><?= $team->getName() ?></h3>
+                    <img src="<?= $joueur->getPortrait()->getUrl() ?>" alt="<?= $joueur->getPortrait()->getAlt() ?>">
+                    <p><?= $joueur->getNickname() ?></p>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
+
+</section>
+
+<section class="player-a-la-une">
+    <h2>LES PLAYERS À LA UNE</h2>
+
+    <div>
+        <?php foreach($data as $player): ?>
+            <?php 
+            if (in_array($player->getNickname(), ['Dundy', 'Wofin', 'Stonk'])): 
+            ?>
+                <div class="player-card">
+                    <img src="<?= $player->getPortrait()->getUrl() ?>" alt="<?= $player->getPortrait()->getAlt() ?>">
+
+                    <h3><?= $player->getNickname() ?></h3>
+
+                    <p>Team : <?= $player->getTeam()->getName() ?></p>
+                </div>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    </div>
+</section>
+
+<section class="dernier-match">
+    <h2>LE DERNIER MATCH</h2>
+
+    <?php
+    $gameManager = new GameManager();
+    $tousLesMatchs = $gameManager->findAll();
+    $dernierMatch = null;
+
+    if (!empty($tousLesMatchs)) {
+        $dernierMatch = $tousLesMatchs[0];
+
+        foreach ($tousLesMatchs as $match) {
+            if ($match->getDate() > $dernierMatch->getDate()) {
+                $dernierMatch = $match;
+            }
+        }
+    }
+    ?>
+
+    <?php if ($dernierMatch): ?>
+        <div class="flex-dernier-match">
+            <h3><?= $dernierMatch->getName() ?></h3>
+            
+            <p><?= $dernierMatch->getDate() ?></p>
+
+            <div">
+                <div>
+                    <img src="<?= $dernierMatch->getTeam1()->getLogo()->getUrl() ?>" alt="<?= $dernierMatch->getTeam1()->getLogo()->getAlt() ?>">
+                </div>
+                <div>
+                    <img src="<?= $dernierMatch->getTeam2()->getLogo()->getUrl() ?>" alt="<?= $dernierMatch->getTeam2()->getLogo()->getAlt() ?>">
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
+
+</section>
+
+

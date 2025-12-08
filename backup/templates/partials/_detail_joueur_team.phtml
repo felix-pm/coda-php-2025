@@ -1,0 +1,100 @@
+<div class="detail_joueur_team">
+
+    <div class="nom_photo">
+
+        <h2><?= $player->getNickname() ?></h2>
+        <img src="<?= $player->getPortrait()->getUrl() ?>" alt="<?= $player->getPortrait()->getAlt() ?>">
+
+    </div>
+
+    <div class="stat_perso">
+
+        <h3>SES PERFORMANCES</h3>
+
+        <table class="tableau_perf_player">
+            
+            <thead>
+                <tr class="container_stat" id="title_list">
+                    <th>TEAM ADVERSE</th>
+                    <th>POINTS</th>
+                    <th>ASSISTS</th>
+                    <th>VICTOIRE</h4>
+                </tr>
+            </thead>
+
+            <tbody id="data_perf">
+            <tr class="container_stat">
+                <td id="team" class="data_stat">
+                    <?php foreach($data["games"] as $game): ?>
+                        <?php if($player->getTeam()->getname() === $game->getTeam1()->getname()):?>
+                            <p><?=$game->getTeam2()->getname()?></p>
+                        
+
+                        <?php elseif($player->getTeam()->getname() === $game->getTeam2()->getname()):?>
+                            <p><?=$game->getTeam1()->getname()?></p>
+
+                        <?php endif;?>
+                    <?php endforeach; ?>
+                </td>
+
+                <td class="data_stat">
+                    <?php foreach($data["stats"] as $stat): ?>
+                        <?php if($player->getNickname() === $stat->getPlayer()->getNickname()):?>
+                            <p><?=$stat->getPoints()?></p>
+                        <?php endif;?>
+                    <?php endforeach;?>
+
+                </td>
+
+                <td class="data_stat"><?php foreach($data["stats"] as $stat): ?>
+                        <?php if($player->getNickname() === $stat->getPlayer()->getNickname()):?>
+                            <p><?=$stat->getAssists()?></p>
+                        <?php endif;?>
+                    <?php endforeach;?>
+                </td>
+                            
+                <td class="data_stat">
+                    
+                    <?php foreach($data["games"] as $game): ?>
+
+                        <?php if(($player->getTeam()->getname() === $game->getTeam1()->getname()) || ($player->getTeam()->getname() === $game->getTeam2()->getname())):?>
+                            <?php if($player->getTeam()->getTeam_id() === $game->getWinner()):?>
+                                <p id="victoire">oui</p>
+                            
+
+                            <?php else:?>
+                                <p id="defaite">non</p>
+
+                            <?php endif;?>
+
+                        <?php endif;?>
+                    <?php endforeach; ?>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+
+    </div>
+
+    <div class="list_teamates">
+
+        <h3>SA TEAM</h3>
+        
+        <div >
+            <ul class="info_teamates">
+                <?php foreach($data["players"] as $teamates): ?>
+                    <?php if(($teamates->getTeam()->getTeam_id() === $player->getTeam()->getTeam_id()) && ($teamates->getNickname() != $player->getNickname())):?>
+                        <li class="data_teamates">
+                            <img src="<?= $teamates->getPortrait()->getUrl() ?>" alt="<?= $teamates->getPortrait()->getAlt() ?>" class = "img">
+                            <p><?=$teamates->getNickname()?></p>
+                            <a href="index.php?route=players&&name=<?= $teamates->getNickname() ?>">DECOUVREZ <?= $teamates->getNickname() ?></a>
+                        </li>
+                    <?php endif;?>
+                <?php endforeach;?>
+            </ul>
+        </div>
+
+    </div>
+
+</div>
