@@ -21,8 +21,24 @@ class AuthController extends AbstractController
                     break; 
                 }
             }
-            if (condition) {
-                # code...
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+            $manager = new UserManager();
+            $user = $manager->findByEmail($email);
+            if ($user) {
+                if (password_verify($password, $user->getPassword())) {
+                $_SESSION['user_id'] = $user->getId();
+                $_SESSION['user_role'] = $user->getRole();
+                $_SESSION['user_firstname'] = $user->getFirstName();
+                $_SESSION['user_lastname']  = $user->getLastName();
+                $_SESSION['user_email']     = $user->getEmail();
+                $this->redirect('index.php?route=profile');
+                
+            } else {
+                    $error = "Identifiants incorrects";
+                }
+            } else {
+                $error = "Identifiants incorrects"; 
             }
         }
         $this->render('auth/login.html.twig', []);

@@ -54,7 +54,7 @@ class UserManager extends AbstractManager
 
         if($item)
         {
-            return new User($item["firstname"], $item["lastname"], $item["email"], $item["password"], $item["role"], $item["id"]);
+            return new User($item["firstName"], $item["lastName"], $item["email"], $item["password"], $item["role"], $item["id"]);
         }
 
         return null;
