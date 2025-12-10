@@ -16,6 +16,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="index.php?route=login">Connexion</a>
                     </li>
+                    {% if session.firstName is defined and session.lastName is defined %}
+                        <span class="nav-link">
+                            {{session.firstName }} {{ session.lastName }}
+                        </span>
+                    {% endif %}
                 </ul>
             </div>
         </div>
