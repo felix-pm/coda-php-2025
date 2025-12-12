@@ -1,0 +1,228 @@
+<?php
+
+class UserController extends AbstractController
+{
+    
+    // FONCTION POUR L'ADMIN
+    public function create_user() :void {
+        if (!isset($_SESSION['role']) || $_SESSION['role'] != 'ADMIN')
+        {
+            $this->redirect('index.php?route=login');
+        }
+        else {
+            $errors = [];
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST')
+        {
+            if( (empty($_POST["email"])) || (empty($_POST["password"]) )|| (empty($_POST["firstName"])) || (empty($_POST["lastName"] )) || (empty($_POST["confirmPassword"]) ) || (empty($_POST["role"]) ))
+            {  
+                $errors[] = "veuillez remplir tout les champs !";
+            }
+
+            //condition de lancement de l'erreur pour le if ci-dessous
+            $ctrl = new UserManager;
+            $verif_email = $ctrl->findByEmail($_POST["email"]);
+
+            //findAll qui permet d'aller récupérer le password dans le else ci-dessous
+            $datas = $ctrl->findAll();
+
+            //si l'utilisateur n'existe pas une erreur est lancé
+            if($verif_email != null)
+            {
+                $errors[] = "L'utilisateur existe déjà";
+            }
+            //si l'utilisateur existe il faut récupérer son password
+
+            
+            //si le password entré dans le formulaire correspond a celui de la base de donnée il n'y a pas d'erreur
+            if(($_POST["password"]) === ($_POST["confirmPassword"]))
+            {   
+                $hashedPassword = password_hash($_POST["password"], PASSWORD_DEFAULT);
+            }
+            else
+            {
+                $errors[] = "Mot de passe incorrect";
+            }
+            
+            
+            if(empty($errors))
+            {
+                $new_user = new User($_POST["firstName"], $_POST["lastName"], $_POST["email"], $hashedPassword, $_POST["role"]);
+                $ctrl->create($new_user); //mettre dans le if empty(errors) avec le $new_user
+                $this->render('admin/users/create_user.html.twig', []);
+            }
+            else
+            {
+                $this->render('admin/users/create_user.html.twig', ['errors' => $errors]);
+            }
+            
+        }
+        
+        }
+    }
+
+    public function update_user() : void {
+        if (!isset($_SESSION['role']) || $_SESSION['role'] != 'ADMIN')
+        {
+            $this->redirect('index.php?route=login');
+        }
+        else {
+
+            $ctrl = new UserManager;
+            $datas = $ctrl->findById($_GET["id"]);
+            if ($_SERVER['REQUEST_METHOD'] === 'POST')
+            {
+                $update_user = new User($_POST["firstName"], $_POST["lastName"], $_POST["email"], password_hash($_POST["password"], PASSWORD_DEFAULT), $_POST["role"], $datas->getId());
+                $ctrl->update($update_user);
+            }
+            $this->render('admin/users/update_user.html.twig', ['datas' => $datas]);
+        }
+    }
+
+    public function delete_user() : void
+    {
+        if (!isset($_SESSION['role']) || $_SESSION['role'] != 'ADMIN')
+        {
+            $this->redirect('index.php?route=login');
+        }
+        else
+        {
+            $this->redirect("index.php?route=list_admin");
+        }
+    }
+
+    public function list_admin() : void //montre la liste des user de toute l'appli
+    {
+        if (!isset($_SESSION['role']) || $_SESSION['role'] != 'ADMIN')
+        {
+            $this->redirect('index.php?route=login');
+        }
+        else
+        {
+            $ctrl = new UserManager;
+            $datas = $ctrl->findAll();
+            $this->render('admin/users/list_admin.html.twig', ['datas' => $datas]);
+        }
+    }
+
+    public function show_user() : void
+    {
+        if (!isset($_SESSION['role']) || $_SESSION['role'] != 'ADMIN')
+        {
+            $this->redirect('index.php?route=login');
+        }
+        else
+        {
+            $id = $_GET["id"];
+            $ctrl = new UserManager;
+            $datas = $ctrl->findById($id);
+            $this->render('admin/users/show.html.twig', ["datas" => $datas]);
+        }
+
+    }
+
+    //FONCTION POUR PAR DEFAUT
+    public function profile() :void
+    {
+        if(isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SESSION["email"]) && isset($_SESSION["role"]) && isset($_SESSION["id"]))
+        {
+            if($_SESSION["role"] === "ADMIN")
+            {
+                $this->redirect('index.php?route=list_admin');
+            }
+            else
+            {
+                $this->render('member/profile.html.twig', []);
+            }
+        }
+        else
+        {
+            $this->render('auth/login.html.twig', []);
+        }
+    }
+
+                                                            //modifié pour que ça marche 
+    public function create_group() :void {
+        if (!isset($_SESSION['role']) || $_SESSION['role'] === 'ADMIN')
+        {
+            $this->redirect('index.php?route=list_admin');
+        }
+        else {
+            $errors = [];
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST')
+        {
+            if( (empty($_POST["name"])) || (empty($_POST["participant"]) )) //vérification si un titre est une liste de participants a été saisi
+            {  
+                $errors[] = "veuillez remplir tout les champs !";
+            }
+
+            //condition de lancement de l'erreur pour le if ci-dessous
+            $ctrl = new GroupManager;
+            $verif_group = $ctrl->findByName($_POST["name"]); //faire une fonction findByName dans GroupManager
+
+            //findAll qui permet d'aller récupérer le password dans le else ci-dessous
+            $datas = $ctrl->findAll();
+
+            //si le groupe existe  une erreur est lancé
+            if($verif_group != null)
+            {
+                $errors[] = "Le groupe existe déjà";
+            }
+            
+            if(empty($errors))
+            {
+                $new_group = new Group($_POST["name"], $_POST["participants"], $_POST["date"]);
+                $ctrl->create_group($new_group); 
+                $this->render('member/create_group.html.twig', []);
+            }
+            else
+            {
+                $this->render('member/create_group.html.twig', ['errors' => $errors]);
+            }
+            
+        }
+        
+        }
+    }
+
+    public function update_group() : void {
+        if (!isset($_SESSION['role']) || $_SESSION['role'] === 'ADMIN')
+        {
+            $this->redirect('index.php?route=list_admin');
+        }
+        else {
+
+            $ctrl = new GroupManager;
+            $datas = $ctrl->findById($_GET["id"]);
+            if ($_SERVER['REQUEST_METHOD'] === 'POST')
+            {
+                $update_user = new Group($datas->getId(), $_POST["name"], $_POST["participants"], $_POST["date"]);
+                $ctrl->update($update_group);
+            }
+            $this->render('member/update_group.html.twig', ['datas' => $datas]);
+        }
+    }
+
+    public function delete_group() : void
+    {
+        if (!isset($_SESSION['role']) || $_SESSION['role'] === 'ADMIN')
+        {
+            $this->redirect('index.php?route=list_admin');
+        }
+        else
+        {
+            $this->redirect("index.php?route=list_admin"); //faire un chemin pour delete
+        }
+    }
+
+    public function expenses() : void //page des dépenses
+    {
+        $this->render("member/expenses.html.twig", []);
+    }
+
+    public function balances() : void //page initiale lorsque l'on clique sur un groupe
+    {
+        $this->render("member/balances.html.twig", []);
+    }
+}
