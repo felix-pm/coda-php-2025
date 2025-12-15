@@ -7,89 +7,102 @@ class AuthController extends AbstractController
         $this->render('home/home.html.twig', []);
     }
 
-    public function login() : void
-    {
-        if (!empty($_POST)) {
-            if (empty($_POST['firstName']) || empty($_POST['lastName']) || empty($_POST['email']) || empty($_POST['password']) || empty($_POST['confirmPassword'])){
-                $error = "Vos données ne sont pas toutes remplies !";
-            }
-            $manager = new UserManager();
-            $users = $manager->findAll(); 
-            foreach ($users as $user) {
-                if ($user->getEmail() ==! $_POST['email']) {
-                    $error = "Votre email est incorrect !";
-                    break; 
+    public function login(): void
+        {
+            $errors = [];
+
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                
+                // 1. Vérification des champs vides
+                if (empty($_POST["email"]) || empty($_POST["password"])) {
+                    $errors[] = "Veuillez remplir tous les champs !";
+                }
+
+                if (empty($errors)) {
+                    $manager = new UserManager();
+                    $user = $manager->findByEmail($_POST["email"]);
+                    if ($user !== null) {
+                        $hashedPassword = $user->getPassword();
+                        if (password_verify($_POST["password"], $hashedPassword)) {
+                            $_SESSION["id"] = $user->getId();
+                            $_SESSION['firstname'] = $user->getFirstName();
+                            $_SESSION['lastname'] = $user->getLastName();
+                            $_SESSION['email'] = $user->getEmail();
+                            $_SESSION['role'] = $user->getRole();
+                            if($user->getRole() === 'ADMIN')
+                            {
+                                $this->redirect("index.php?route=list_admin");
+                            }
+                            else 
+                            {
+                                $this->redirect("index.php?route=home");
+                            }
+                            exit;
+                        } else {
+                            $errors[] = "Identifiants incorrects (mot de passe).";
+                        }
+                    } else {
+                        $errors[] = "Identifiants incorrects (email).";
+                    }
                 }
             }
-            $email = $_POST['email'];
-            $password = $_POST['password'];
-            $manager = new UserManager();
-            $user = $manager->findByEmail($email);
-            if ($user) {
-                if (password_verify($password, $user->getPassword())) {
-                    $_SESSION["firstName"] = $user->getFirstName();
-                    $_SESSION["lastName"] = $user->getLastName();
-                    $_SESSION["email"] = $user->getEmail();
-                    $_SESSION["user_role"] = $user->getRole();
-                    $_SESSION["id"] = $user->getId();
-                    $this->redirect('index.php?route=profile');
-                }
-                else {
-                    $error = "Identifiants incorrects";
-                }
-            } else {
-                $error = "Identifiants incorrects"; 
-            }
+
+            $this->render('auth/login.html.twig', ['errors' => $errors]);
         }
-        $this->render('auth/login.html.twig', []);
-    }
+
 
     public function logout() : void
     {
         session_destroy();
-        $this->redirect('login.php');
+        $this->redirect('index.php?route=login');
     }
 
     public function register(): void
-{
-    $error = null;
-    if (!empty($_POST)) {
-        if (empty($_POST['firstName']) || empty($_POST['lastName']) || empty($_POST['email']) || empty($_POST['password']) || empty($_POST['confirmPassword'])) {
-            $error = "Vos données ne sont pas toutes remplies !";
-        }
-        elseif ($_POST['password'] !== $_POST['confirmPassword']) {
-            $error = "Vos mots de passe ne sont pas identiques !";
-        }
-        else {
+    {
+        $errors = [];
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST')
+        {
+            if (empty($_POST["firstname"]) || empty($_POST["lastname"]) || empty($_POST["email"]) || empty($_POST["password"]) || empty($_POST["confirmPassword"]))
+            {  
+                $errors[] = "Veuillez remplir tous les champs !";
+            }
             $manager = new UserManager();
-            $users = $manager->findAll(); 
-            foreach ($users as $user) {
-                if ($user->getEmail() === $_POST['email']) {
-                    $error = "Votre email est déjà utilisé !";
-                    break; 
-                }
+            $userCandidat = $manager->findByEmail($_POST["email"]);
+            if ($userCandidat !== null)
+            {
+                $errors[] = "Cet email est déjà utilisé !";
+            }
+            if ($_POST["password"] !== $_POST["confirmPassword"])
+            {
+                $errors[] = "Les mots de passe ne correspondent pas !";
+            }
+            if (empty($errors)) {
+                $hashedPassword = password_hash($_POST['password'], PASSWORD_DEFAULT);
+                
+                $userToCreate = new User(
+                    $_POST['email'],
+                    $hashedPassword,
+                    $_POST['firstname'],
+                    $_POST['lastname'],
+                    "USER"
+                );
+                $manager->create_user($userToCreate);
+                $this->redirect('index.php?route=login');
+                exit;
             }
         }
-        if ($error === null) {
-            $hashedPassword = password_hash($_POST['password'], PASSWORD_DEFAULT);
-            $userToCreate = new User(
-                $_POST['firstName'],
-                $_POST['lastName'],
-                $_POST['email'],
-                $hashedPassword
-            );
-            $userToCreate->setRole("USER");
-            $manager = new UserManager();
-            $manager->create($userToCreate);
-            $this->redirect('index.php?route=login');
-            exit;
-        }
+        
+        $this->render('auth/register.html.twig', ['errors' => $errors]);
     }
-    $this->render('auth/register.html.twig', ['error' => $error]);
-}
 
     public function notFound() : void
     {
         $this->render('error/notFound.html.twig', []);
     }
+
+    public function page_connexion(): void
+        {
+            $this->render('auth/page_connexion.html.twig', []);
+        }
 }

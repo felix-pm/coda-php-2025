@@ -14,7 +14,10 @@ class Router
     {
         if(!empty($_GET['route'])) {
             if($_GET['route'] === 'home') {
-                $this->ac->home();
+                $this->uc->home();
+            }
+            else if($_GET['route'] === 'login') {
+                $this->ac->login();
             }
             else if($_GET['route'] === 'register') {
                 $this->ac->register();
@@ -49,6 +52,18 @@ class Router
             else if($_GET['route'] === 'show_user') {
                 $this->uc->show_user();
             }
+            else if($_GET['route'] === 'expenses') {
+                $this->uc->expenses();
+            }
+            else if($_GET['route'] === 'reimbursement') {
+                $this->uc->reimbursement();
+            }
+            else if($_GET['route'] === 'validate_reimbursement') {
+                $this->uc->validate_reimbursement();
+            }
+            else if($_GET['route'] === 'affichage_expenses') {
+                $this->uc->affichage_expenses();
+            }
             else
             {
                 $this->ac->notFound();
@@ -56,7 +71,7 @@ class Router
         }
         else
         {
-            $this->ac->login();
+            $this->ac->page_connexion();
         }
     }
 }

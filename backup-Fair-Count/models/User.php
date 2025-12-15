@@ -3,35 +3,11 @@
 class User
 {
 
-    public function __construct(private int $id, private string $username, private string $email, private string $password, private Datetime $create_at)
+    public function __construct(private string $email, private string $password, private string $firstname, private string $lastname, private string $role, private ?int $id = NULL)
     {
 
     }  
     
-    public function getId()
-    {
-        return $this->id;
-    }   
-    
-    public function setId($id)
-    {
-        $this->id = $id;
-
-        return $this;
-    }
-    
-    public function getUsername()
-    {
-        return $this->username;
-    }
-    
-    public function setUsername($username)
-    {
-        $this->username = $username;
-
-        return $this;
-    }
-
     public function getEmail()
     {
         return $this->email;
@@ -55,15 +31,52 @@ class User
 
         return $this;
     }
-
-    public function getCreate_at()
+    
+    public function getFirstname()
     {
-        return $this->create_at;
+        return $this->firstname;
+    }
+    
+    public function setFirstname($firstname)
+    {
+        $this->firstname = $firstname;
+
+        return $this;
     }
 
-    public function setCreate_at($create_at)
+    public function getLastname()
     {
-        $this->create_at = $create_at;
+        return $this->lastname;
+    }
+    
+    public function setLastname($lastname)
+    {
+        $this->lastname = $lastname;
+
+        return $this;
+    }
+
+
+    public function getRole()
+    {
+        return $this->role;
+    }
+
+    public function setRole($role)
+    {
+        $this->role = $role;
+
+        return $this;
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function setId($id)
+    {
+        $this->id = $id;
 
         return $this;
     }
